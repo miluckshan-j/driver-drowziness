@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useModel } from "../hooks/useModel";
-import { ASL_MODEL } from "../model/Model";
+import { MODEL } from "../model/Model";
 import Webcam from "./Webcam";
 import { Text } from "@chakra-ui/react";
 
 const Prediction = ({ isRecording, predictedFeature, setPredictedFeature }) => {
-  const { isModelLoaded, predictClass } = useModel(ASL_MODEL);
+  const { isModelLoaded, predictClass } = useModel(MODEL);
   const [predictedClass, setPredictedClass] = useState("");
 
   useEffect(() => {
