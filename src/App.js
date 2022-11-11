@@ -3,6 +3,8 @@ import "./App.css";
 import Prediction from "./components/Prediction";
 import Header from "./components/Header";
 import { Button, VStack } from "@chakra-ui/react";
+import { writeToDB } from "./utils/firebaseFunctions";
+import { createDataObject } from "./utils/fields";
 
 function App() {
   const [isRecording, setIsRecording] = useState(false);
@@ -11,13 +13,18 @@ function App() {
 
   useEffect(() => {
     if (isRecording) {
-      setPredictions((oldArray) => [...oldArray, predictedFeature]);
+      setPredictions(predictedFeature);
     } else {
-      setPredictions([""]);
+      setPredictions("");
     }
   }, [isRecording, predictedFeature]);
 
-  console.log("predictions", predictions);
+  useEffect(() => {
+    if (predictions !== "") {
+      const data = createDataObject(predictions);
+      writeToDB(data);
+    }
+  }, [predictions]);
 
   return (
     <div className="App">
