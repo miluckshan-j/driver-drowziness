@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useWebcam } from "../../hooks/useWebcam";
+import { useWebcam } from "../hooks/useWebcam";
 
 const Webcam = ({ canvas, updateInterval, isRecording, onUpdate }) => {
   const webcamDivRef = useRef(null);
