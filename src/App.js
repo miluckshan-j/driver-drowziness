@@ -31,7 +31,6 @@ function App() {
         <Button
           colorScheme="red"
           variant={"outline"}
-          isLoading={isRecording}
           loadingText="Recording"
           onClick={() => setIsRecording(!isRecording)}
         >
